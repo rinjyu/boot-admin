@@ -1,0 +1,33 @@
+server:
+  port: ${port.codebox-boot-admin}
+
+spring:
+  profiles:
+    active: local
+  banner:
+    location: classpath:/banner/banner.txt
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+---
+spring:
+  profiles: local
+
+
+---
+spring:
+  profiles: dev
+
+
+---
+spring:
+  profiles: stag
+
+
+---
+spring:
+  profiles: prod

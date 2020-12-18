@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: codebox-boot-admin
+  profiles:
+    active: local
+
+---
+spring:
+  profiles: local
+  cloud:
+    config:
+      uri: http://127.0.0.1:8500
+
+
+---
+spring:
+  profiles: dev
+
+
+---
+spring:
+  profiles: stag
+
+
+---
+spring:
+  profiles: prod
