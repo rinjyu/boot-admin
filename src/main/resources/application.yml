@@ -2,8 +2,12 @@ server:
   port: ${port.codebox-boot-admin}
 
 spring:
+  application:
+    name: codebox-boot-admin
   profiles:
     active: local
+  config:
+    import: "optional:configserver:http://codebox-cloud-config"
   banner:
     location: classpath:/banner/banner.txt
 
@@ -15,19 +19,25 @@ management:
 
 ---
 spring:
-  profiles: local
-
-
----
-spring:
-  profiles: dev
-
+  config:
+    activate:
+      on-profile: local
+    import: "optional:configserver:http://127.0.0.1:8500"
 
 ---
 spring:
-  profiles: stag
-
+  config:
+    activate:
+      on-profile: dev
 
 ---
 spring:
-  profiles: prod
+  config:
+    activate:
+      on-profile: stag
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
